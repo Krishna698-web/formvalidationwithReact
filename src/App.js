@@ -2,6 +2,7 @@ import React from "react";
 
 import styles from "./App.module.css";
 import useInput from "./Components/hooks/use-input";
+import BasicForm from "./Components/forms/BasicForm";
 
 const App = () => {
   const {
@@ -47,7 +48,7 @@ const App = () => {
 
   return (
     <div>
-      <form onSubmit={submitHandler}>
+      {/* <form onSubmit={submitHandler}>
         <h1>Fill in your Name</h1>
         <div>
           <div className={nameHelperClasses}>
@@ -72,7 +73,9 @@ const App = () => {
           </div>
         </div>
         <button disabled={!formIsValid}>Submit</button>
-      </form>
+      </form> */}
+
+      <BasicForm />
     </div>
   );
 };
