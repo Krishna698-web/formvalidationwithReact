@@ -1,0 +1,17 @@
+.form_control {
+  padding: 2rem;
+}
+
+input {
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.notValid input {
+  border: 1px solid red;
+  background: lightpink;
+}
+
+.notValid p {
+  color: red;
+}
