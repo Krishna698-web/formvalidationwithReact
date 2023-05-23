@@ -1,82 +1,91 @@
 import React from "react";
-
-import styles from "./App.module.css";
 import useInput from "./Components/hooks/use-input";
-import BasicForm from "./Components/forms/BasicForm";
 
 const App = () => {
   const {
-    value: enteredName,
-    hasError,
+    value: nameInputVal,
+    isValid: nameIsValid,
+    error: nameError,
     inputHandler: nameInputHandler,
-    blurHandler: nameBlurHandler,
-    reset,
-  } = useInput((value) => value.trim() !== "");
+    inputBlurHandler: nameInputBlurHandler,
+    reset: nameReset,
+  } = useInput((value) => value !== "");
 
   const {
-    value: enteredAge,
-    hasError: ageHasError,
-    inputHandler: ageInputHandler,
-    blurHandler: ageBlurHandler,
-    reset: resetAge,
-  } = useInput((value) => value.trim() !== "");
+    value: lnameInputVal,
+    isValid: lnameIsValid,
+    error: lnameError,
+    inputHandler: lnameInputHandler,
+    inputBlurHandler: lnameInputBlurHandler,
+    reset: lnameReset,
+  } = useInput((value) => value !== "");
 
+  const {
+    value: emailInputVal,
+    isValid: emailIsValid,
+    error: emailError,
+    inputHandler: emailInputHandler,
+    inputBlurHandler: emailInputBlurHandler,
+    reset: emailReset,
+  } = useInput((value) => value.includes("@"));
+
+  //   FormValidity
   let formIsValid = false;
 
-  if (enteredName && enteredAge) {
+  if (nameIsValid && lnameIsValid && emailIsValid) {
     formIsValid = true;
   }
 
   const submitHandler = (e) => {
     e.preventDefault();
+    console.log(nameInputVal, emailInputVal, lnameInputVal);
 
-    if (!enteredName) {
+    if (!nameIsValid && !lnameIsValid && !emailIsValid) {
       return;
     }
-    reset();
 
-    resetAge();
+    nameReset();
+    lnameReset();
+    emailReset();
   };
 
-  const nameHelperClasses = hasError
-    ? `${styles.form_control} ${styles.notValid}`
-    : styles.form_control;
-
-  const ageHelperClasses = ageHasError
-    ? `${styles.form_control} ${styles.notValid}`
-    : styles.form_control;
-
   return (
-    <div>
-      {/* <form onSubmit={submitHandler}>
-        <h1>Fill in your Name</h1>
-        <div>
-          <div className={nameHelperClasses}>
-            <label>Name:</label>
-            <input
-              type="text"
-              value={enteredName}
-              onChange={nameInputHandler}
-              onBlur={nameBlurHandler}
-            />
-            {hasError && <p>Please enter your name</p>}
-          </div>
-          <div className={ageHelperClasses}>
-            <label>Age:</label>
-            <input
-              type="number"
-              value={enteredAge}
-              onChange={ageInputHandler}
-              onBlur={ageBlurHandler}
-            />
-            {ageHasError && <p>Please enter your age</p>}
-          </div>
-        </div>
-        <button disabled={!formIsValid}>Submit</button>
-      </form> */}
-
-      <BasicForm />
-    </div>
+    <form onSubmit={submitHandler}>
+      <h1>Basic Form</h1>
+      <div className="field" style={{ margin: "1rem 0" }}>
+        <label style={{ display: "block" }}>Name:</label>
+        <input
+          type="text"
+          value={nameInputVal}
+          onChange={nameInputHandler}
+          onBlur={nameInputBlurHandler}
+        />
+        {nameError && <p style={{ color: "red" }}>No inut given.</p>}
+      </div>
+      <div className="field" style={{ margin: "1rem 0" }}>
+        <label style={{ display: "block" }}>Last name:</label>
+        <input
+          type="text"
+          value={lnameInputVal}
+          onChange={lnameInputHandler}
+          onBlur={lnameInputBlurHandler}
+        />
+        {lnameError && <p style={{ color: "red" }}>No inut given.</p>}
+      </div>
+      <div className="field" style={{ margin: "1rem 0" }}>
+        <label style={{ display: "block" }}>Email:</label>
+        <input
+          type="email"
+          value={emailInputVal}
+          onChange={emailInputHandler}
+          onBlur={emailInputBlurHandler}
+        />
+        {emailError && <p style={{ color: "red" }}>No inut given.</p>}
+      </div>
+      <button type="submit" disabled={!formIsValid}>
+        Submit
+      </button>
+    </form>
   );
 };
 
