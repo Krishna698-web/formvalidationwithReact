@@ -77,7 +77,25 @@ form input {
   font-size: 12px;
 }
 
-form button {
+.passwordSpace {
+  position: relative;
+}
+
+.eye {
+  position: absolute;
+  top: 16%;
+  right: 7%;
+  border: none;
+  cursor: pointer;
+  /* background-color: green; */
+}
+.eye svg {
+  height: 1.2rem;
+  position: absolute;
+  color: gray;
+}
+
+form .submit_button {
   padding: 10px 4rem;
   display: block;
   margin: 0 auto;
@@ -89,7 +107,7 @@ form button {
   cursor: pointer;
 }
 
-form button:disabled {
+form .submit_button:disabled {
   cursor: not-allowed;
   background: lightgray;
 }
