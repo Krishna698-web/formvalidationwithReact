@@ -8,12 +8,9 @@ html {
 }
 
 body {
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  /* background: linear-gradient(90deg, #42275a, #734b6d); */
   height: 100vh;
-  /* align-content: center; */
+  margin: 0;
+  background: linear-gradient(180deg, #2eaafa, #1f2f98);
 }
 
 main {

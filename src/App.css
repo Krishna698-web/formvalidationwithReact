@@ -36,3 +36,60 @@
     transform: rotate(360deg);
   }
 }
+
+form {
+  background-color: white;
+  padding: 1rem 2rem;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  border-radius: 5px;
+  transform: translate(-50%, -50%);
+}
+
+form h1 {
+  text-align: center;
+}
+
+form label {
+  font-size: 14px;
+  margin-bottom: 2px;
+  display: block;
+}
+
+form input {
+  padding: 8px;
+  border-radius: 3px;
+  outline: none;
+  width: 18rem;
+  border: 1px solid lightgray;
+  background-color: whitesmoke;
+}
+.text-error {
+  color: red;
+}
+
+.passwordError h6 {
+  margin: 8px 0;
+}
+.passwordError span {
+  display: block;
+  font-size: 12px;
+}
+
+form button {
+  padding: 10px 4rem;
+  display: block;
+  margin: 0 auto;
+  margin-top: 1rem;
+  border-radius: 3px;
+  border: none;
+  color: white;
+  background: #1f2f98;
+  cursor: pointer;
+}
+
+form button:disabled {
+  cursor: not-allowed;
+  background: lightgray;
+}
